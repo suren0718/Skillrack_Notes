@@ -1,0 +1,30 @@
+import java.util.*;
+
+public class Hello {
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in); // Step 1: Create a Scanner object for input
+        Stack<String> bookStack = new Stack<>();  // Step 2: Create a Stack to store books
+
+        while (scanner.hasNextLine()) {  // Step 3: Keep reading input until EOF (or exit condition)
+            String input = scanner.nextLine().trim();  // Step 4: Read a line and remove extra spaces
+
+            if (input.equals("0")) { // Step 5: If input is "0", exit the loop (termination condition)
+                break;
+            }
+
+            if (input.startsWith("1 ")) {  // Step 6: If input starts with "1 ", it's an "add book" command
+                bookStack.push(input.substring(2)); // Step 7: Extract the book name and push it onto the stack
+            } 
+            else if (input.equals("-1")) {  // Step 8: If input is "-1", remove the top book (if the stack is not empty)
+                if (!bookStack.isEmpty()) {
+                    bookStack.pop();
+                }
+            } 
+            else if (input.equals("2")) {  // Step 9: If input is "2", print the book on top of the stack
+                if (!bookStack.isEmpty()) {
+                    System.out.println(bookStack.peek()); // Step 10: Display the top book
+                }
+            }
+        }
+    }
+}
